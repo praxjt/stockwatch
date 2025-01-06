@@ -1,0 +1,275 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color:rgb(255, 255, 255);
+    width: 300px;
+   height: 205px;
+
+   
+}
+
+.home{
+    height: 100%;
+}
+.hidesection{
+    display: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color:#F6F5F2;
+border-radius: 5px ;
+    margin-top: 20px;
+    margin: 10px;
+height: calc(100% - 44px );
+    padding: 10px;
+}
+/* .container{
+    position: relative;
+} */
+.btns{
+    /* position: absolute; */
+    margin-top: 4px;
+    display: flex;
+    
+    justify-content: flex-start;
+    gap: 4px;
+    padding-left: 5px;
+   
+}
+.input {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.input:focus {
+    border-color: #007bff;
+}
+
+button {
+    padding: 5px 8px;
+    font-size: 16px;
+    color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #3f93ed62;
+}
+
+
+.active {
+    background-color: #0056b3;
+    color: white;
+
+}
+.Accionescontainer {
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scroll-padding: 0;
+    scroll-margin: 0;
+    z-index: 1;
+
+   
+}
+
+.Accionescontainer .Unico {
+    margin: 3px 0 3px 0; /* Adds space on all sides */
+    height: 50%;
+    z-index: 1;
+    /* height: calc(100% - 40px); */
+
+  }
+.clonedUnico{
+    /* align-self: flex-start; */
+    /* width: 40%; */
+    background-color: #D3D3D3;
+    /* border-radius: 20px; */
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    z-index: 1;
+    cursor: pointer;
+     margin: 5px;
+
+   
+}
+
+.appendedstock{
+    margin: 0;
+    padding: 0;
+}
+.clonedUnico:hover{
+    background-color: #d3d3d381;
+}
+.appendedstock{
+    padding: 5px;
+}
+.hide{
+display: none;
+/* visibility: hidden; */
+
+}
+
+.FlechaDerecha{
+    padding-right: 5px;
+    /* padding: ; */
+}
+
+.stocksection{
+    
+    padding: 5px;
+    height: calc(100% - 44px);
+    margin: 5px;
+   background-color:rgb(204, 197, 197);
+
+}
+
+.price{
+    font-size: 28px;
+}
+.change,.perchnge{
+    font-size: 15px;
+}
+
+footer{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 100;
+    height: 30px;
+      bottom: 0;
+    position: fixed;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.731);
+   
+}
+.btncontainer{
+    cursor: pointer;
+    height: 100%;
+   
+}
+.WatchListSection{
+    padding: 5px;
+    height: calc(100% - 44px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scroll-padding: 0;
+    scroll-margin: 0;
+    
+    margin: 5px;
+   background-color:rgb(204, 197, 197);
+}
+
+.footerbtns{
+   
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-left: 7px;
+    gap:10px;
+    padding: 0;
+    margin: 0, 0 ,0, 5px;
+}
+svg{
+    width: 12px;
+    height: 12px;
+
+}
+.icon{
+    color: rgba(255, 255, 255, 0.731);
+    
+}
+
+.franceza{
+   padding: 5px;
+    background-color: #D3D3D3;
+}
+.footerbtnlink{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+   display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 2px;
+    
+}
+.activefooterbtnlink{
+    color:#f4eeee ;
+    text-shadow:0 0 10px #ffffff80,0 0 20px #fff9;
+
+}
+.clear{
+    display: flex;
+     justify-self: flex-end;
+    right: 0;
+}
+.clear:hover button{
+    background-color: #2882dd;
+    color: white;
+}
+.pricecontainer{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+.toggle{
+    height: 20px;
+    width: 20px;
+    position: fixed;
+    /* bottom: 44px; */
+    z-index: 500;
+    background-color: #57a1ea8e;
+    padding: 5px;
+    border-radius: 50%;
+}
+.toggle:hover{
+    background-color: #2882dd;
+
+}
+.toggle:hover .leftarrowsvg path {
+    fill: rgb(255, 255, 255);
+
+}
+
+
+.francezawatchlist{
+    padding: 5px;
+    margin: 5px;
+    background-color: #D3D3D3;
+}
+.addtowatchlist{
+    display: flex;
+     justify-self: flex-end;
+    right: 0;
+   
+}
+.addtowatchlist:hover button{
+    background-color: #2882dd;
+    color: white;
+}
+.hidewatchlist {
+    visibility: hidden;
+}
+.leftarrowsvg{
+    height: 20px;
+    width: 20px;
+
+}
+.leftarrow:hover .leftarrowsvg path{
+    fill:#F6F5F2;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+
+  <!--    input section -->
+  <!-- <h1 class="title">Stocks</h1> -->
+   <section class="home">
+<div class="container">
+<div class="subcontainer">
+  <input class="input" type="text">
+  <div  class="btns">
+    <button class="btn">Gainer</button>
+  <button class="btn">Looser</button>
+  </div>
+</div>
+<div class="Accionescontainer hide">
+
+<div class="Unico">
+<h3 class="Manzana">Apple
+</h3>
+<h6 class="manzil">symbol</h6>
+<h5></h5>
+</div>
+
+</div>
+</div>
+</section>
+  <!-- stock section     -->
+
+<section class="stocksection hidesection  ">
+  <div class="stockContainer">
+    <div class="franceza ">
+    <h2 class="stockname"></h2>
+    <div class="pricecontainer">
+<span class="price"></span> <span class="change"></span> <span class="perchnge"></span>
+</div>
+<div class="toggle">
+  <svg class="leftarrowsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path  fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+</div>
+    
+<div class="addtowatchlist " >
+  <button >Add to WatchList</button>
+</div>
+</div>
+  </div>
+
+  <!--  watchlist section     -->
+</section>
+<section class="WatchListSection hidesection ">
+  <div class="watchlistContainer ">
+    <div class="francezawatchlist">
+    <h2 class="stockname">stocname</h2>
+    <div class="pricecontainer">
+      <span class="price"></span> <span class="change"></span> <span class="perchnge"></span>
+    </div>
+      <div class="clear" >
+        <button >X</button>
+      </div>
+ 
+
+  </div>
+ 
+
+  </div>
+</section>
+<footer>
+<div class="footerbtns">
+  <div id="search"  class="btncontainer">
+    <h3   class="footerbtnlink btn "> 
+      <svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+      </svg> 
+       Search</h3>
+  </div>
+  <div id="watchlist" class="btncontainer">
+    <h3 class="footerbtnlink btn ">
+      <svg    class="icon2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+        <path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+      </svg>
+       WatchList</h3>
+  </div>
+</div>
+
+</footer>
+<script  src="popup.js"></script>
+</body>
+
+</html>
