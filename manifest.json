@@ -1,16 +1,28 @@
 {
     "manifest_version":3,
-    "name":"Stock watchlist",
+    "name":"LiveStocker",
     "version":"1.0",
-    "description":  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum doloribus unde ratione perferendis? Debitis laboriosam deleniti dolore voluptates eius cum facilis, commodi officia excepturi placeat aliquam temporibus quisquam in corrupti.",
-    "action":{
+"description": "Track live stock prices and manage your watchlist easily. Stay ahead in the market with real-time stock updates.",    "action":{
         "default_popup":"popup.html"
+},
+"icons": {
+    "128": "./icons/logo.png"
+ },
 
-    },
     
-    "permissions":["storage","activeTab"],
+    "permissions":["storage","activeTab","webRequest"],
     "host_permissions": [
-        "https://query1.finance.yahoo.com/*"
-      ]
+        "https://api.shoonya.com/*"
+      ],
+"content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["./popup.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
+      }
 
 }

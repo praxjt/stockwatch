@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: black;
+
     background-color:rgb(255, 255, 255);
     width: 300px;
    height: 205px;
@@ -12,6 +13,14 @@ body {
 
 .home{
     height: 100%;
+}
+.logo{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top :20px;
+    left: 20px;
+    
 }
 .hidesection{
     display: none;
@@ -29,6 +38,7 @@ border-radius: 5px ;
 height: calc(100% - 44px );
     padding: 10px;
 }
+
 /* .container{
     position: relative;
 } */
@@ -43,6 +53,7 @@ height: calc(100% - 44px );
    
 }
 .input {
+    margin-top: 20px;
     padding: 8px 12px;
     font-size: 16px;
     border: 2px solid #ccc;
@@ -63,10 +74,37 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
-    background-color: #3f93ed62;
 }
 
+.Manzana{
+    color: white;
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.manzil{
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    display: inline;
+    
 
+}
+.sicmund{
+    
+    display: flex;
+    justify-content: space-between;
+    /* justify-items:flex-start; */
+}
+
+.manas{
+  color: rgb(0, 0, 0);
+    font-size: 16px;
+    padding: 3px;
+    margin: 3px;
+
+    background-color: silver;
+}
 .active {
     background-color: #0056b3;
     color: white;
@@ -83,14 +121,42 @@ button {
 
    
 }
+.flash {
+    background-color: #fffbc1;
+    transition: background-color 0.5s ease;
+  }
+  
+.emptywatchlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 44px);
+    margin: 5px;
+    background-color:rgb(204, 197, 197);
+    font-size: 20px;
+    color: #000000;
 
+}
+.emptysearchlist{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: calc(100% - 44px); */
+    /* margin: 5px; */
+    font-size: 20px;
+    color: red;
+    overflow-y: hidden;
+}
 .Accionescontainer .Unico {
-    margin: 3px 0 3px 0; /* Adds space on all sides */
-    height: 50%;
+    margin: 3px 0 3px 0; 
+    /* height: 50%; */
     z-index: 1;
     /* height: calc(100% - 40px); */
+    background-color: #000000;
+    cursor: pointer;
 
   }
+
 .clonedUnico{
     /* align-self: flex-start; */
     /* width: 40%; */
@@ -143,7 +209,9 @@ display: none;
 .change,.perchnge{
     font-size: 15px;
 }
-
+.perchange{
+    font-size: 15px;
+}
 footer{
     margin: 0;
     padding: 0;
@@ -217,7 +285,7 @@ svg{
      justify-self: flex-end;
     right: 0;
 }
-.clear:hover button{
+.clear:hover {
     background-color: #2882dd;
     color: white;
 }
@@ -255,13 +323,18 @@ svg{
 .addtowatchlist{
     display: flex;
      justify-self: flex-end;
-    right: 0;
-   
+    right: 0;  
 }
-.addtowatchlist:hover button{
+.addtowatchlist:hover{
     background-color: #2882dd;
     color: white;
 }
+.addedwatchlist{
+    display: flex;
+     justify-self: flex-end;
+    right: 0;
+}
+
 .hidewatchlist {
     visibility: hidden;
 }
