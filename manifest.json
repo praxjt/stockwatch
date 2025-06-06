@@ -1,7 +1,7 @@
 {
     "manifest_version":3,
     "name":"LiveStocker",
-    "version":"1.0",
+    "version":"1.1",
 "description": "Track live stock prices and manage your watchlist easily. Stay ahead in the market with real-time stock updates.",    "action":{
         "default_popup":"popup.html"
 },
