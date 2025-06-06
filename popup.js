@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (query === "") {
       container.classList.add("hide");
-      // container.innerHTML = "";
       return;
     }
 
@@ -110,18 +109,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function AddToWatchlistToken(token) {
     let favWatchlistToken = getFavWatchlistToken();
-    if (!favWatchlistToken.includes(token)) {
+    const alreadyExists = favWatchlistToken.some(
+      (item) => item.symbol === token.symbol && item.token === token.token
+    );
+
+    if (!alreadyExists) {
       favWatchlistToken.push(token);
       saveWatchlistToken(favWatchlistToken);
     }
-
     // localStorage.setItem(`stock-${token}`, JSON.stringify(stockObject));
   }
 
   function RemoveFromWatchlistToken(token, stockDiv) {
     let favWatchlistToken = getFavWatchlistToken();
-    favWatchlistToken = favWatchlistToken.filter((tk) => tk !== token);
-    localStorage.removeItem(`stock-${token}`);
+    favWatchlistToken = favWatchlistToken.filter(
+      (tk) => !(tk.symbol === token.symbol && tk.token === token.token)
+    );
+    localStorage.removeItem(`stock-${token.token}`);
     saveWatchlistToken(favWatchlistToken);
     stockDiv.remove();
     toseeempty();
@@ -131,9 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!watchlistContainer) {
       console.error("watchlistContainer not found.");
     }
-// if in case by clicking watchlistbtn watchlistContainer not loads call createWatchlistcontainer() in watclistbtn
-    // watchlistContainer.innerHTML = "";
-
+    // if in case by clicking watchlistbtn watchlistContainer not loads call createWatchlistcontainer() in watclistbtn
+    // dont use .innerHTML for user inputs user can put html css script code
     let favWatchlistToken = getFavWatchlistToken();
 
     if (favWatchlistToken.length === 0) {
@@ -146,16 +149,18 @@ document.addEventListener("DOMContentLoaded", () => {
       watchlistContainer.textContent = "";
       watchlistContainer.style.color = "black";
       favWatchlistToken.forEach((token) => {
-        let stockData = JSON.parse(localStorage.getItem(`stock-${token}`));
+        let stockData = JSON.parse(
+          localStorage.getItem(`stock-${token.token}`)
+        );
 
         if (!stockData) {
-          console.warn(`Stock data not found for token: ${token}`);
+          console.warn(`Stock data not found for token: ${token.token}`);
           return;
         }
 
         let favStockContainer = document.createElement("div");
         favStockContainer.className = "francezawatchlist";
-        favStockContainer.id = token;
+        favStockContainer.id = token.token;
 
         let clearbtn = document.createElement("button");
         clearbtn.classList.add("clear");
@@ -229,12 +234,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let favWatchlistToken = getFavWatchlistToken();
 
     if (favWatchlistToken.length === 0) {
+   
       toseeempty();
 
-      return;
+      
     } else {
-      const updatedTokens = favWatchlistToken.map((token, index) =>
-        index === 0 ? token : `NSE|${token}`
+      const updatedTokens = favWatchlistToken.map(
+        (item) => `NSE|${item.token}`
       );
       const tokenString = updatedTokens.join("#");
       watchlistdata(tokenString);
@@ -286,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
   getUserId();
   async function searchScrips(data) {
     try {
-      // container.innerHTML = "";
       container.classList.remove("hide");
       if (data.stat === "Ok") {
         container.classList.remove("emptysearchlist");
@@ -338,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
               const symbol =
                 e.currentTarget.querySelector(".manzil").textContent;
               const token = e.currentTarget.getAttribute("data-token");
-              selectedtoken = token;
+              selectedtoken = { symbol, token };
 
               homesection.classList.add("hidesection");
               stocksection.classList.remove("hidesection");
@@ -353,7 +358,10 @@ document.addEventListener("DOMContentLoaded", () => {
               getdata(stockname, symbol, token, e.currentTarget.id);
               let favWatchlistToken = getFavWatchlistToken();
 
-              if (favWatchlistToken.includes(token)) {
+              const isAlreadyAdded = favWatchlistToken.some(
+                (item) => item.token === token
+              );
+              if (isAlreadyAdded) {
                 addtowatchlistbtn.textContent = "Added";
                 addtowatchlistbtn.classList.add("addedwatchlist");
                 addtowatchlistbtn.classList.remove("addtowatchlist");
@@ -387,15 +395,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastpercent = "";
 
   function selectedstocks(ws, response, symbol, stockname, token, id) {
-
-    if (selectedtoken !== token) {
+    if (selectedtoken.token !== token) {
       return;
     }
     addtowatchlistbtn.classList.remove("hidewatchlist");
 
     // document.querySelector(".stockname").textContent = `${(symbol && symbol.trim()) || " " } (${(stockname && stockname.trim()) || " "})`;
-    document.querySelector(".stockname").textContent = `${(stockname && stockname.trim()) || " "} (${(symbol && symbol.trim()) || " "})`;
-
+    document.querySelector(".stockname").textContent = `${
+      (stockname && stockname.trim()) || " "
+    } (${(symbol && symbol.trim()) || " "})`;
 
     const lp = parseFloat(response.lp);
     const pc = parseFloat(response.pc);
@@ -434,7 +442,10 @@ document.addEventListener("DOMContentLoaded", () => {
       AddToWatchlistToken(selectedtoken);
 
       let favWatchlistToken = getFavWatchlistToken();
-      if (favWatchlistToken.includes(token)) {
+      const isAlreadyAdded = favWatchlistToken.some(
+        (item) => item.token === token
+      );
+      if (isAlreadyAdded) {
         addtowatchlistbtn.textContent = "Added";
         addtowatchlistbtn.classList.add("addedwatchlist");
         addtowatchlistbtn.classList.remove("addtowatchlist");
@@ -467,20 +478,25 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.t === "ck") {
         const subscribeRequest = {
           t: "t",
-          k: `NSE|${token}`,
+          k: token,
         };
         ws.send(JSON.stringify(subscribeRequest));
         return;
       }
 
-      let { tk, lp, pc,ts } = response;
+      let { tk, lp, pc } = response;
       let favWatchlistToken = getFavWatchlistToken();
-      if (favWatchlistToken.includes(tk)) {
+      const isWatched = favWatchlistToken.some(
+        (item) => item.token === String(tk)
+      );
+      if (isWatched) {
         let storedStock = JSON.parse(localStorage.getItem(`stock-${tk}`)) || {};
-
         const parsedLP = parseFloat(lp);
         const parsedPC = parseFloat(pc);
-        storedStock.stockname=ts
+        const matched = favWatchlistToken.find(
+          (item) => item.token === String(tk)
+        );
+        storedStock.stockname = matched?.symbol;
 
         if (!isNaN(parsedLP)) {
           storedStock.lastprice = parsedLP.toFixed(2);
